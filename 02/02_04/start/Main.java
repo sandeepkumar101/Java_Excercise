@@ -10,6 +10,7 @@ public class Main {
         Stream<String> shoppingStream = Stream.of("apples",
                 "bananas", "cherries", "coffee");
 
+        Stream<String> strstm = Stream.of("wer","er","ert","dss");
 
         // Create a stream from other collection types
         // -------------------------------------------
@@ -19,9 +20,19 @@ public class Main {
                 "bananas", "cherries", "coffee"};
         Stream<String> shoppingArrayStream = Arrays.stream(shoppingArray);
 
+        String[] strary = new String[]{"wer","er","ert","dss"};
+        Stream<String> strartstm = Arrays.stream(strary); 
         // Lists
         List<String> shoppingList = List.of("apples",
                 "bananas", "cherries", "coffee");
         Stream<String> shoppingListStream = shoppingList.stream();
+        shoppingListStream.forEach(System.out::println);
+
+        //shoppingListStream.parallel().forEach(System.out::println);
+
+        // match
+        boolean mayMatch = shoppingListStream.anyMatch(t -> t.equals("apples"));
+
+        
     }
 }
