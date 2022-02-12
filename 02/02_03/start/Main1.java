@@ -6,7 +6,7 @@ import java.util.function.IntPredicate;
 import java.util.function.Supplier;
 import java.util.stream.IntStream;
 
-public class Main {
+public class Main1 {
 
     public static void main(String[] args) {
         ArrayList<String> students = new ArrayList();

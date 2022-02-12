@@ -53,41 +53,43 @@ public class BackspaceStringCompare {
     public boolean backspaceCompare1(String s, String t) {
         Stack<Character> st1 = new Stack<>();
         Stack<Character> st2 = new Stack<>();
-        for(char ch : s.toCharArray()) {
-        	if(ch == '#'){
-                if(st1.size() > 0)
+        for (char ch : s.toCharArray()) {
+            if (ch == '#') {
+                if (st1.size() > 0)
                     st1.pop();
-            }else
-        		st1.push(ch);
+            } else
+                st1.push(ch);
         }
-        for(char ch : t.toCharArray()) {
-            if(ch == '#'){
-                if(st2.size() > 0)
+        for (char ch : t.toCharArray()) {
+            if (ch == '#') {
+                if (st2.size() > 0)
                     st2.pop();
-            }else
-        		st2.push(ch);
+            } else
+                st2.push(ch);
         }
-        if(st1.size() != st2.size())
-        	return false;
-        while(st1.size() > 0) {
-        	char ch1 = st1.pop();
-        	char ch2 = st2.pop();
-        	if(ch1 != ch2)
-        		return false;
+        if (st1.size() != st2.size())
+            return false;
+        while (st1.size() > 0) {
+            char ch1 = st1.pop();
+            char ch2 = st2.pop();
+            if (ch1 != ch2)
+                return false;
         }
         return true;
     }
 
     public static boolean backspaceCompare2(String s, String t) {
-        if (s.length() == 1 && t.length() == 1) return s.equals(t);
+        if (s.length() == 1 && t.length() == 1)
+            return s.equals(t);
         return cleansedString(t).equals(cleansedString(s));
     }
-    
+
     private static Stack<Character> cleansedString(String str) {
         Stack<Character> stackStr = new Stack<>();
         for (var ch : str.toCharArray()) {
             if (ch == '#') {
-                if (!stackStr.isEmpty()) stackStr.pop();
+                if (!stackStr.isEmpty())
+                    stackStr.pop();
             } else {
                 stackStr.push(ch);
             }
