@@ -40,25 +40,25 @@ public class LargestProduct {
         if (nums.length == 3) {
             return nums[0] * nums[1] * nums[2];
         }
-        int max = 0;
+        int firstMax = 0;
         int product = 1;
-        int SECOND_MAX = 0;
-        int Third_MAX = 0;
+        int secondMax = 0;
+        int thirdMax = 0;
         for (int i = 0; i < nums.length; i++) {
-            if (Math.abs(nums[i]) > Math.abs(Third_MAX)) {
-                max = SECOND_MAX;
-                SECOND_MAX = Third_MAX;
-                Third_MAX = nums[i];
+            if (Math.abs(nums[i]) > Math.abs(thirdMax)) {
+                firstMax = secondMax;
+                secondMax = thirdMax;
+                thirdMax = nums[i];
 
-            } else if (Math.abs(nums[i]) > Math.abs(SECOND_MAX)) {
-                max = SECOND_MAX;
-                SECOND_MAX = nums[i];
-            } else if (Math.abs(nums[i]) > Math.abs(max)) {
-                max = nums[i];
+            } else if (Math.abs(nums[i]) > Math.abs(secondMax)) {
+                firstMax = secondMax;
+                secondMax = nums[i];
+            } else if (Math.abs(nums[i]) > Math.abs(firstMax)) {
+                firstMax = nums[i];
             }
 
         }
-        product = max * SECOND_MAX * Third_MAX;
+        product = firstMax * secondMax * thirdMax;
         return product;
     }
 }
