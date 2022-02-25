@@ -44,7 +44,7 @@ public class FindPeakElement {
     }
 
     // Faster solution
-    public int findPeakElement(int[] nums) {
+    public static int findPeakElement(int[] nums) {
         int start = 0;
         int end = nums.length - 1;
         if (nums.length == 0)
