@@ -2,9 +2,11 @@ import java.net.SocketPermission;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -123,6 +125,15 @@ public class JavaStream {
                                                 Collectors.mapping(Employee::getId, Collectors.toList())));
 
                 System.out.println(idGroupedByAlphabet.get('J').get(0));
+
+
+                String key = "";
+                Map<String, String> container = new HashMap<>();
+                Map<String, String> result = new HashMap<>();
+                container.entrySet()
+                .stream()
+                .filter(entry -> entry.getKey().equals(key))
+                .forEach(entry -> result.put(entry.getKey(), entry.getValue()));
 
         }
 }
