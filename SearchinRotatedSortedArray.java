@@ -1,7 +1,7 @@
 public class SearchinRotatedSortedArray {
     public static void main(String[] args) {
         int res[] = { 4,5,6,7,0,1,2 };
-        System.out.println(search(res, 0));
+        System.out.println(search1(res, 0));
     }
 
     public static int search(int[] nums, int target) {
@@ -56,6 +56,55 @@ public class SearchinRotatedSortedArray {
             }
 
         return ans;
+    }
+
+    public static int search1(int[]  nums, int target){
+
+        int start = 0;
+        int end = nums.length - 1;
+        int pivot = findPivot(nums);
+        if(pivot == -1)
+            return binarySearch(nums, start, end, target);
+        else if(target == nums[pivot])
+            return pivot;
+        else if(target < nums[pivot])
+            return binarySearch(nums, start, pivot - 1, target);
+        else
+            return binarySearch(nums, pivot + 1, end, target);
+
+    }
+
+    public static int findPivot(int[] nums)
+    {
+        int left = 0;
+        int right = nums.length - 1;
+
+        int mid = -1;
+        while(left<right){
+            mid = left +(right-left)/2;
+           if(nums[mid]>nums[left])
+                right = mid + 1;
+            else 
+                left = mid;            
+        }
+        return mid;
+    }
+
+
+    public static int binarySearch(int[] nums, int left, int right, int target)
+    {
+        while(left<right)
+        {
+            int mid = left + (right-left)/2;
+            if(nums[mid] == target)
+                return mid;
+            if(nums[mid]< target)
+                right = mid + 1;
+            else
+                left = mid;
+
+        }
+        return -1;
     }
 }
 
