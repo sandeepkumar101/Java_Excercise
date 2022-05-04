@@ -19,7 +19,9 @@ You are given a sorted (in increasing order) array A of days when you will be tr
     A[4] = 7
     A[5] = 29
     A[6] = 30
-you can buy one 7-day ticket and two 1-day tickets. The two 1-day tickets should be used on days 29 and 30. The 7-day ticket should be used on the first seven days. The total cost is 11 and there is no possible way of paying less.
+you can buy one 7-day ticket and two 1-day tickets. The two 1-day tickets should be used on days 29 and 30. 
+The 7-day ticket should be used on the first seven days. 
+The total cost is 11 and there is no possible way of paying less.
 
 <1>,  <2>,  3,  <4>,  <5>,  6,  <7>,
 8,  9,  10, 11, 12, 13, 14,
@@ -44,6 +46,7 @@ array A is sorted in increasing order;
 the elements of A are all distinct.
  */
 public class TransportTicket {
+<<<<<<< HEAD:Stream/TransportTicket.java
 
     public static void main(String[] args) {
         int[] days = {1,4,6,7,8,20}, costs = {2,7,15};
@@ -139,4 +142,9 @@ public class TransportTicket {
         return dpTicket;
     }
 
+=======
+    public static void main(String[] args) {
+        System.out.println("x");
+    }
+>>>>>>> 67c1079cc8872056e07f69ac663b2f3edcebcbfe:TransportTicket.java
 }
