@@ -1,5 +1,6 @@
 package StreamExample;
 
+import java.math.BigDecimal;
 import java.net.SocketPermission;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,6 +19,8 @@ import Common.Employee;
 
 public class JavaStream {
         public static void main(String[] args) {
+
+                JavaStream js = new JavaStream();
                 // TODO Auto-generated method stub
                 Stream<String> strstm = Stream.of("wer", "er", "ert", "dss");
                 Stream<Integer> intstm = Stream.of(1, 2, 3, 4, 5);
@@ -130,14 +133,111 @@ public class JavaStream {
 
                 System.out.println(idGroupedByAlphabet.get('J').get(0));
 
-
                 String key = "";
                 Map<String, String> container = new HashMap<>();
                 Map<String, String> result = new HashMap<>();
                 container.entrySet()
-                .stream()
-                .filter(entry -> entry.getKey().equals(key))
-                .forEach(entry -> result.put(entry.getKey(), entry.getValue()));
+                                .stream()
+                                .filter(entry -> entry.getKey().equals(key))
+                                .forEach(entry -> result.put(entry.getKey(), entry.getValue()));
 
+                List<Staff> staff = Arrays.asList(
+                                js.new Staff("mkyong", 30, new BigDecimal(10000)),
+                                js.new Staff("jack", 27, new BigDecimal(20000)),
+                                js.new Staff("lawrence", 33, new BigDecimal(30000)));
+
+                // convert inside the map() method directly.
+                List<StaffPublic> result2 = staff.stream().map(temp -> {
+                        StaffPublic obj = js.new StaffPublic();
+                        obj.setName(temp.getName());
+                        obj.setAge(temp.getAge());
+                        if ("mkyong".equals(temp.getName())) {
+                                obj.setExtra("this field is for mkyong only!");
+                        }
+                        return obj;
+                }).collect(Collectors.toList());
+
+                System.out.println(result2);
+
+        }
+
+        public class StaffPublic {
+
+                private String name;
+                private int age;
+                private String extra;
+
+                public StaffPublic() {
+
+                }
+
+                // ...
+                public StaffPublic(String name, int age, String extra) {
+                        this.name = name;
+                        this.age = age;
+                        this.extra = extra;
+                }
+
+                public String getName() {
+                        return name;
+                }
+
+                public void setName(String name) {
+                        this.name = name;
+                }
+
+                public int getAge() {
+                        return age;
+                }
+
+                public void setAge(int age) {
+                        this.age = age;
+                }
+
+                public String getExtra() {
+                        return extra;
+                }
+
+                public void setExtra(String extra) {
+                        this.extra = extra;
+                }
+        }
+
+        public class Staff {
+
+                private String name;
+                private int age;
+                private BigDecimal salary;
+
+                // ...
+                public Staff(String name, int age, BigDecimal salary) {
+                        this.name = name;
+                        this.age = age;
+                        this.salary = salary;
+                }
+
+                public String getName() {
+                        return name;
+                }
+
+                public void setName(String name) {
+                        this.name = name;
+                }
+
+                public int getAge() {
+                        return age;
+                }
+
+                public void setAge(int age) {
+                        this.age = age;
+                }
+
+                public BigDecimal getSalary() {
+                        return salary;
+                }
+
+                public void setSalary(BigDecimal salary) {
+                        this.salary = salary;
+                }
         }
 }
