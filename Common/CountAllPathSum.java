@@ -29,6 +29,7 @@ class CountAllPathSum {
             pathSum -= val;
         }
         if (pathSum == S) {
+            System.out.println(pathList);
             return 1;
         }
         return recursiveCall(root.left, S, pathSum, pathList) + recursiveCall(root.right, S, pathSum, pathList);
@@ -41,6 +42,7 @@ class CountAllPathSum {
         root.left.left = new TreeNode(4);
         root.right.left = new TreeNode(10);
         root.right.right = new TreeNode(5);
+        root.right.right.left = new TreeNode(5);
         System.out.println("Tree has path: " + CountAllPathSum.countPaths(root, 11));
     }
 }

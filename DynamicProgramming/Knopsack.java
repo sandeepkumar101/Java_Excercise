@@ -1,4 +1,4 @@
-package DynamicProgramming;
+package dynamicprogramming;
 
 import java.util.Arrays;
 
@@ -51,7 +51,14 @@ public class Knopsack {
                 dp[0][c] = profits[0];
             }
         }
-
+        /*
+[0, 1, 1, 1, 1, 1, 1, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+        */
+        Print.print2D(dp);
+        System.out.println("");
         for (int i = 1; i < profits.length; i++) {
             for (int c = 1; c <= capacity; c++) {
                 int profit1 = 0, profit2 = 0;
@@ -64,7 +71,7 @@ public class Knopsack {
                 dp[i][c] = Math.max(profit1, profit2);
             }
         }
-        print2D(dp);
+        Print.print2D(dp);
         printSelectedElement(dp, profits, weights, capacity);
         return dp[profits.length - 1][capacity];
     }
@@ -108,12 +115,5 @@ public class Knopsack {
         System.out.println(" ");
     }
 
-    public static void print2D(int mat[][]) {
-        // Loop through all rows
-        for (int[] row : mat)
-            // converting each row as string
-            // and then printing in a separate line
-            System.out.println(Arrays.toString(row));
-    }
 
 }
