@@ -1,4 +1,4 @@
-package dynamicprogramming;
+package DynamicProgramming;
 
 public class SubsetSum {
     static boolean canPartition(int[] num, int sum) {

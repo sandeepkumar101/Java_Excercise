@@ -9,6 +9,7 @@ public class Address {
     private String country;
     private int zipcode;
 }
+/*
 
 public enum BookingStatus
 {
@@ -28,4 +29,4 @@ public enum SeatType
 public enum PaymentStatus
 {
     UNPAID, PENDING, COMPLETED, FAILED, DECLINED, SETTLING, SETTLED, REFUNDED
-}
+}*/

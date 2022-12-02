@@ -1,23 +1,23 @@
 package Common;
-class TreeNode {
+class TreeNode6 {
     int val;
-    TreeNode left;
-    TreeNode right;
+    TreeNode1 left;
+    TreeNode1 right;
   
-    TreeNode(int x) {
+    TreeNode6(int x) {
       val = x;
     }
   };
   
   class MaximumPathSum {
     static int maxPathSum = 0;
-    public static int findMaximumPathSum(TreeNode root) {
+    public static int findMaximumPathSum(TreeNode1 root) {
       // TODO: Write your code here
       recursiveCall(root);
       return maxPathSum;
     }
 
-    public static int recursiveCall(TreeNode root){
+    public static int recursiveCall(TreeNode1 root){
         if(root == null)
         {
             return 0;
@@ -31,22 +31,22 @@ class TreeNode {
     }
   
     public static void main(String[] args) {
-      TreeNode root = new TreeNode(1);
-      root.left = new TreeNode(2);
-      root.right = new TreeNode(3);
+      TreeNode1 root = new TreeNode1(1);
+      root.left = new TreeNode1(2);
+      root.right = new TreeNode1(3);
       System.out.println("Maximum Path Sum: " + MaximumPathSum.findMaximumPathSum(root));
       
-      root.left.left = new TreeNode(1);
-      root.left.right = new TreeNode(3);
-      root.right.left = new TreeNode(5);
-      root.right.right = new TreeNode(6);
-      root.right.left.left = new TreeNode(7);
-      root.right.left.right = new TreeNode(8);
-      root.right.right.left = new TreeNode(9);
+      root.left.left = new TreeNode1(1);
+      root.left.right = new TreeNode1(3);
+      root.right.left = new TreeNode1(5);
+      root.right.right = new TreeNode1(6);
+      root.right.left.left = new TreeNode1(7);
+      root.right.left.right = new TreeNode1(8);
+      root.right.right.left = new TreeNode1(9);
       System.out.println("Maximum Path Sum: " + MaximumPathSum.findMaximumPathSum(root));
       
-      root = new TreeNode(-1);
-      root.left = new TreeNode(-3);
+      root = new TreeNode1(-1);
+      root.left = new TreeNode1(-3);
       System.out.println("Maximum Path Sum: " + MaximumPathSum.findMaximumPathSum(root));
     }
   }

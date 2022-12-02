@@ -1,24 +1,23 @@
 package Common;
-import java.util.*;
 
-class TreeNode {
+class TreeNode7 {
     int val;
-    TreeNode left;
-    TreeNode right;
+    TreeNode1 left;
+    TreeNode1 right;
 
-    TreeNode(int x) {
+    TreeNode7(int x) {
         val = x;
     }
 };
 
 class SumOfPathNumbers {
-    public static int findSumOfPathNumbers(TreeNode root) {
+    public static int findSumOfPathNumbers(TreeNode1 root) {
         // TODO: Write your code here
 
         return recursiveCall(root, 0);
     }
 
-    public static int recursiveCall1(TreeNode root, int total, int currentSum) {
+    public static int recursiveCall1(TreeNode1 root, int total, int currentSum) {
         if (root == null) {
             return total;
         }
@@ -30,7 +29,7 @@ class SumOfPathNumbers {
         return recursiveCall1(root.left, total, currentSum) + recursiveCall1(root.right, total, currentSum);
     }
 
-    public static int recursiveCall(TreeNode root, int total) {
+    public static int recursiveCall(TreeNode1 root, int total) {
         if (root == null) {
             return 0;
         }
@@ -43,12 +42,12 @@ class SumOfPathNumbers {
     }
 
     public static void main(String[] args) {
-        TreeNode root = new TreeNode(1);
-        root.left = new TreeNode(0);
-        root.right = new TreeNode(1);
-        root.left.left = new TreeNode(1);
-        root.right.left = new TreeNode(6);
-        root.right.right = new TreeNode(5);
+        TreeNode1 root = new TreeNode1(1);
+        root.left = new TreeNode1(0);
+        root.right = new TreeNode1(1);
+        root.left.left = new TreeNode1(1);
+        root.right.left = new TreeNode1(6);
+        root.right.right = new TreeNode1(5);
         System.out.println("Total Sum of Path Numbers: " + SumOfPathNumbers.findSumOfPathNumbers(root));
     }
 }
