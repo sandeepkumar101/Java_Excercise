@@ -161,6 +161,11 @@ public class JavaStream {
 
         }
 
+        public class Citi{
+                String name;
+                
+        }
+
         public class StaffPublic {
 
                 private String name;

@@ -2,6 +2,15 @@ package DynamicProgramming;
 
 import java.util.Arrays;
 
+/**
+ * Problem Statement
+ * Given two integer arrays to represent weights and profits of ‘N’ items,
+ * we need to find a subset of these items which will give us maximum profit
+ * such that their cumulative weight is not more than a given number ‘C’.
+ * Write a function that returns the maximum profit.
+ * Each item can only be selected once, which means either
+ * we put an item in the knapsack or skip it.
+ */
 public class Knopsack {
 
     public static void main(String[] args) {
@@ -9,9 +18,10 @@ public class Knopsack {
         int[] profits = { 1, 6, 10, 16 };
         int[] weights = { 1, 2, 3, 5 };
         int capacity = 7;
-        System.out.println(ks.solveKnapstack(profits, weights, capacity));
-        System.out.println(ks.solveKnapstacDp(profits, weights, capacity));
-        System.out.println(ks.solveKnapstacDp1(profits, weights, capacity));
+        // System.out.println(ks.solveKnapstack(profits, weights, capacity));
+        System.out.println(ks.solveKnapsack(profits, weights, capacity));
+        // System.out.println(ks.solveKnapstacDp(profits, weights, capacity));
+        // System.out.println(ks.solveKnapstacDp1(profits, weights, capacity));
     }
 
     public int solveKnapstack(int[] profits, int[] weights, int capacity) {
@@ -52,11 +62,11 @@ public class Knopsack {
             }
         }
         /*
-[0, 1, 1, 1, 1, 1, 1, 0]
-[0, 0, 0, 0, 0, 0, 0, 0]
-[0, 0, 0, 0, 0, 0, 0, 0]
-[0, 0, 0, 0, 0, 0, 0, 0]
-        */
+         * [0, 1, 1, 1, 1, 1, 1, 0]
+         * [0, 0, 0, 0, 0, 0, 0, 0]
+         * [0, 0, 0, 0, 0, 0, 0, 0]
+         * [0, 0, 0, 0, 0, 0, 0, 0]
+         */
         Print.print2D(dp);
         System.out.println("");
         for (int i = 1; i < profits.length; i++) {
@@ -86,7 +96,7 @@ public class Knopsack {
                 int profit1 = 0, profit2 = 0;
 
                 if (weights[i] <= remainingCapacity) {
-                    profit1 = profits[i] + dp[remainingCapacity-weights[i - 1]];
+                    profit1 = profits[i] + dp[remainingCapacity - weights[i - 1]];
                 }
 
                 profit2 = dp[c];
@@ -115,5 +125,42 @@ public class Knopsack {
         System.out.println(" ");
     }
 
-
+    /**
+     * W P
+     * 1 1  [0, 0, 0, 0, 0, 0, 0, 0]
+     * 2 6  [0, 0, 0, 0, 0, 0, 0, 0]
+     * 3 10 [0, 0, 0, 0, 0, 0, 0, 0]
+     * 5 16 [0, 0, 0, 0, 0, 0, 0, 0]
+     * 
+     * @param profits
+     * @param weights
+     * @param capacity
+     * @return
+     */
+    public int solveKnapsack(int[] profits, int[] weights, int capacity) {
+        int[][] dp = new int[profits.length][capacity + 1];
+        for (int i = 0; i < profits.length; i++) {
+            dp[i][0] = 0;
+        }
+        for (int c = 0; c < capacity; c++) {
+            if (weights[0] <= c)
+                dp[0][c] = profits[0];
+            else
+                dp[0][c] = 0;
+        }
+        System.out.println(Arrays.deepToString(dp));
+        for (int i = 1; i < profits.length; i++) {
+            for (int c = 0; c < capacity + 1; c++) {
+                int profit1 = 0;
+                if (weights[i] <= c) {
+                    profit1 = profits[i] + dp[i - 1][c - weights[i]];
+                }
+                int profit2 = dp[i - 1][c];
+                dp[i][c] = Math.max(profit1, profit2);
+            }
+            System.out.println(Arrays.deepToString(dp));
+        }
+        System.out.println(Arrays.deepToString(dp));
+        return dp[profits.length - 1][capacity];
+    }
 }

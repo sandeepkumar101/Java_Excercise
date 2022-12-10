@@ -1,10 +1,12 @@
 package Common;
+
 import javax.lang.model.util.ElementScanner6;
 
 public class ValidPalindromeII {
     public static void main(String[] args) {
         String s = "acxcybycxcxa";// "A
         System.out.println(validPalindrome(s.toLowerCase()));
+        System.out.println(validPalindromeAlmost(s.toLowerCase()));
     }
 
     public static boolean validPalindrome1(String s) {
@@ -102,6 +104,31 @@ public class ValidPalindromeII {
             right--;
         }
 
+        return true;
+    }
+
+    public static boolean validPalindromeAlmost(String s) {
+        int left = 0;
+        int right = s.length() - 1;
+        int maxUnmatch = 1;
+        return validPalindromeHelperAlmost(left, right, s, maxUnmatch);
+    }
+
+    public static boolean validPalindromeHelperAlmost(int left, int right, String s, int maxUnmatch) {
+
+        while (left < right) {
+            if (s.charAt(left) != s.charAt(right)) {
+                maxUnmatch--;
+                if (maxUnmatch > 0) {
+                    return validPalindromeHelperAlmost(left + 1, right, s, maxUnmatch)
+                            || validPalindromeHelperAlmost(left, right - 1, s, maxUnmatch);
+                } else {
+                    return false;
+                }
+            }
+            left++;
+            right--;
+        }
         return true;
     }
 }
