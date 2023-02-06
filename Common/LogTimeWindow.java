@@ -42,7 +42,7 @@ public class LogTimeWindow {
         List<Integer> logs1 = logs.stream().map(lg -> {
             LocalDateTime start = lg.getTimestamp();
             LocalDateTime end = lg.getTimestamp().plusHours(3);
-            Map<String, List<Log>> logsWithinWindow = logs.stream().filter(p -> isWithinRange1(start, end, p.getTimestamp(),lg.getResource(),p.getResource()));
+            Map<String, List<Log>> logsWithinWindow = (Map<String, List<Log>>) logs.stream().filter(p -> isWithinRange1(start, end, p.getTimestamp(),lg.getResource(),p.getResource()));
             return ((IntStream) logsWithinWindow.mapToInt(Log::getCount)).sum();
         }).collect(Collectors.toList());
         logs.stream().forEach(System.out::println);

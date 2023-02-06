@@ -1,24 +1,24 @@
 package Common;
 import java.util.*;
 
-class TreeNode {
+class TreeNode2 {
     int val;
-    TreeNode left;
-    TreeNode right;
+    TreeNode1 left;
+    TreeNode1 right;
 
-    TreeNode(int x) {
+    TreeNode2(int x) {
         val = x;
     }
 };
 
 class CountAllPathSum {
-    public static int countPaths(TreeNode root, int S) {
+    public static int countPaths(TreeNode1 root, int S) {
         // TODO: Write your code here
         List<Integer> pathList = new ArrayList<>();
         return recursiveCall(root, S, 0, pathList);
     }
 
-    public static int recursiveCall(TreeNode root, int S, int pathSum, List<Integer> pathList) {
+    public static int recursiveCall(TreeNode1 root, int S, int pathSum, List<Integer> pathList) {
         if (root == null) {
             return 0;
         }
@@ -36,13 +36,13 @@ class CountAllPathSum {
     }
 
     public static void main(String[] args) {
-        TreeNode root = new TreeNode(12);
-        root.left = new TreeNode(7);
-        root.right = new TreeNode(1);
-        root.left.left = new TreeNode(4);
-        root.right.left = new TreeNode(10);
-        root.right.right = new TreeNode(5);
-        root.right.right.left = new TreeNode(5);
+        TreeNode1 root = new TreeNode1(12);
+        root.left = new TreeNode1(7);
+        root.right = new TreeNode1(1);
+        root.left.left = new TreeNode1(4);
+        root.right.left = new TreeNode1(10);
+        root.right.right = new TreeNode1(5);
+        root.right.right.left = new TreeNode1(5);
         System.out.println("Tree has path: " + CountAllPathSum.countPaths(root, 11));
     }
 }

@@ -1,6 +1,6 @@
 import java.util.Optional;
 
-public class Main1 {
+public class Main122 {
 
     public static void main(String[] args) {
 

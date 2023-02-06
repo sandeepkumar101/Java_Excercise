@@ -2,7 +2,6 @@ package DynamicProgramming;
 
 import java.util.Arrays;
 
-import apple.laf.JRSUIConstants.Widget;
 
 public class Knopsack {
 

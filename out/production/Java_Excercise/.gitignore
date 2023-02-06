@@ -1,0 +1,12 @@
+
+*.xml
+*.class
+*.iml
+*.pb
+out/production/Java_Excercise/.vscode/settings.json
+out/production/Java_Excercise/05/05_08/text-inputs.txt
+out/production/Java_Excercise/Common/MovieTicketBooking
+out/production/Java_Excercise/Library/Readme.MD
+out/production/Java_Excercise/MovieTicketSystem/readme.md
+out/production/Java_Excercise/Requirement/Google Drive.md
+out/production/Java_Excercise/Requirement/Requirement.md

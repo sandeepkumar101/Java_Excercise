@@ -1,18 +1,17 @@
 package Common;
-import java.util.Stack;
 
-class TreeNode {
+class TreeNode9 {
     int val;
-    TreeNode left;
-    TreeNode right;
+    TreeNode1 left;
+    TreeNode1 right;
 
-    TreeNode(int x) {
+    TreeNode9(int x) {
         val = x;
     }
 };
 
 class TreePathSum {
-    public static boolean hasPath(TreeNode root, int sum) {
+    public static boolean hasPath(TreeNode1 root, int sum) {
         // TODO: Write your code here
         if (root == null)
             return false;
@@ -25,12 +24,12 @@ class TreePathSum {
     }
 
     public static void main(String[] args) {
-        TreeNode root = new TreeNode(12);
-        root.left = new TreeNode(7);
-        root.right = new TreeNode(1);
-        root.left.left = new TreeNode(9);
-        root.right.left = new TreeNode(10);
-        root.right.right = new TreeNode(5);
+        TreeNode1 root = new TreeNode1(12);
+        root.left = new TreeNode1(7);
+        root.right = new TreeNode1(1);
+        root.left.left = new TreeNode1(9);
+        root.right.left = new TreeNode1(10);
+        root.right.right = new TreeNode1(5);
         System.out.println("Tree has path: " + TreePathSum.hasPath(root, 23));
         System.out.println("Tree has path: " + TreePathSum.hasPath(root, 16));
     }
