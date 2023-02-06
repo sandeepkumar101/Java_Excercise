@@ -1,4 +1,4 @@
-package dynamicprogramming;
+package DynamicProgramming;
 
 class LPS {
 
@@ -9,6 +9,7 @@ class LPS {
             dp[i][i] = 1;
         }
         Print.print2D(dp);
+        System.out.println(st.length());
         for (int i = st.length() - 1; i >= 0; i--) {
             for (int j = i + 1; j < st.length(); j++) {
                 if (st.charAt(i ) == st.charAt(j)) {

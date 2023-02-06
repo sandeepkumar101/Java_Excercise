@@ -1,6 +1,8 @@
-package dynamicprogramming;
+package DynamicProgramming;
 
 import java.util.Arrays;
+
+import apple.laf.JRSUIConstants.Widget;
 
 public class Knopsack {
 
@@ -12,6 +14,7 @@ public class Knopsack {
         System.out.println(ks.solveKnapstack(profits, weights, capacity));
         System.out.println(ks.solveKnapstacDp(profits, weights, capacity));
         System.out.println(ks.solveKnapstacDp1(profits, weights, capacity));
+        System.out.println(ks.solveKnapstacDp2(profits, weights, capacity));
     }
 
     public int solveKnapstack(int[] profits, int[] weights, int capacity) {
@@ -52,11 +55,11 @@ public class Knopsack {
             }
         }
         /*
-[0, 1, 1, 1, 1, 1, 1, 0]
-[0, 0, 0, 0, 0, 0, 0, 0]
-[0, 0, 0, 0, 0, 0, 0, 0]
-[0, 0, 0, 0, 0, 0, 0, 0]
-        */
+         * [0, 1, 1, 1, 1, 1, 1, 0]
+         * [0, 0, 0, 0, 0, 0, 0, 0]
+         * [0, 0, 0, 0, 0, 0, 0, 0]
+         * [0, 0, 0, 0, 0, 0, 0, 0]
+         */
         Print.print2D(dp);
         System.out.println("");
         for (int i = 1; i < profits.length; i++) {
@@ -86,7 +89,7 @@ public class Knopsack {
                 int profit1 = 0, profit2 = 0;
 
                 if (weights[i] <= remainingCapacity) {
-                    profit1 = profits[i] + dp[remainingCapacity-weights[i - 1]];
+                    profit1 = profits[i] + dp[remainingCapacity - weights[i - 1]];
                 }
 
                 profit2 = dp[c];
@@ -115,5 +118,37 @@ public class Knopsack {
         System.out.println(" ");
     }
 
+    public static int solveKnapstacDp2(int[] weight, int[] profit, int capacity) {
+        int[][] dp = new int[weight.length][capacity + 1];
+
+        for (int i = 0; i < weight.length; i++) {
+            dp[i][0] = 0;
+        }
+
+        for (int i = 0; i < capacity + 1; i++) {
+            // if(capacity> weight[0])
+            dp[0][i] = profit[0];
+        }
+        Print.print2D(dp);
+        for (int i = 1; i < weight.length; i++) {
+            for (int j = 1; j < capacity + 1; j++) {
+                int profitExclude = 0;
+                int profitInclude = 0;
+
+                // Include
+                if (weight[i] <= j)
+                    profitInclude = profit[i] + dp[i - 1][j - weight[i]];
+
+                profitExclude = dp[i - 1][j];
+
+                dp[i][j] = Math.max(profitExclude, profitInclude);
+
+            }
+        }
+        Print.print2D(dp);
+        return dp[weight.length - 1][capacity];
+    }
 
 }
+
+

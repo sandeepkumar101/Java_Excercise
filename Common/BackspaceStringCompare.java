@@ -14,8 +14,8 @@ public class BackspaceStringCompare {
         int j = ta.length - 1;
         int ix = 0;
         int jx = 0;
-        StringBuffer sb = new StringBuffer();
-        StringBuffer tb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
+        StringBuilder tb = new StringBuilder();
 
         while (i >= 0) {
             if (sa[i] == backspacechar) {

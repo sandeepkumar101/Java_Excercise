@@ -52,7 +52,7 @@ class ShortURl
 	// Driver Code
 	public static void main (String[] args) throws IOException
 	{
-		int n = 62*2;
+		int n = 12;
 		String shorturl = idToShortURL(n);
 		System.out.println("Generated short url is " + shorturl);
 		System.out.println("Id from url is " +

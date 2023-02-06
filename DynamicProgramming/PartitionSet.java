@@ -1,4 +1,4 @@
-package dynamicprogramming;
+package DynamicProgramming;
 
 import java.util.Arrays;
 

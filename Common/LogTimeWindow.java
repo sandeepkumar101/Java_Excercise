@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -37,7 +38,7 @@ public class LogTimeWindow {
             logs.add(l.new Log(i, lt.minusMinutes(rand.nextInt(59)), rand.nextInt(10),"resource"+j));
         }
     
-
+        /*
         List<Integer> logs1 = logs.stream().map(lg -> {
             LocalDateTime start = lg.getTimestamp();
             LocalDateTime end = lg.getTimestamp().plusHours(3);
@@ -45,14 +46,14 @@ public class LogTimeWindow {
             return ((IntStream) logsWithinWindow.mapToInt(Log::getCount)).sum();
         }).collect(Collectors.toList());
         logs.stream().forEach(System.out::println);
-
         Map<Set<Integer>, Double> map = logs.stream().map(log -> {
             var start = log.getTimestamp();
             var end = log.getTimestamp().plusHours(3);
             var logsWithinWindow = logs.stream().filter(p -> isWithinRange1(start, end, p.getTimestamp(),log.getResource(),p.getResource()));
             return ((IntStream) logsWithinWindow.map(t -> {})
         }).collect(Collectors.toList());
-
+        
+        */
         
     }
 
