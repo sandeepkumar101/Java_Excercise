@@ -1,14 +1,20 @@
 package Common;
 //Trapping Rain Water
+
 //https://leetcode.com/problems/trapping-rain-water/
 
 public class TrappingRainWater {
     public static void main(String[] args) {
-        int[] ints = { 0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1 };
+        // int[] ints = { 0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1 };
+        int[] ints = { 0, 1, 0, 2, 1, 0, 3, 1, 0, 1, 2 };
         // int[] ints = {4,2,0,3,2,5};
         int trap = trap3(ints);
         System.out.println(trap);
         trap = trap2(ints);
+        System.out.println(trap);
+        trap = trap4(ints);
+        System.out.println(trap);
+        trap = trap5(ints);
         System.out.println(trap);
     }
 
@@ -154,6 +160,56 @@ public class TrappingRainWater {
             }
         }
         return tap;
+    }
+
+    public static int trap4(int[] height) {
+        int tappingWater = 0;
+        int left = 0;
+        int right = 1;
+        while (right < height.length) {
+            if (height[left] < height[right]) {
+                int index = right - 1;
+                while (left < index) {
+                    tappingWater += height[left] - height[index];
+                    index--;
+                }
+                left = right;
+            }
+
+            right++;
+        }
+        return tappingWater;
+    }
+
+    public static int trap5(int[] height) {
+        int tappingWater = 0;
+        int leftMax = 0;
+        int rightMax = 0;
+        int currentPointer = 0;
+        while (currentPointer < height.length) {
+            if (currentPointer > rightMax) {
+                rightMax = currentPointer;
+                int index = rightMax + 1;
+                while (index < height.length) {
+                    if (height[rightMax] <= height[index]) {
+                        rightMax = index;
+                    }
+                    index++;
+                }
+            }
+            if (height[leftMax] <= height[currentPointer]) {
+                leftMax = currentPointer;
+            }
+            // System.out.println("Current:" + currentPointer + "-" +
+            // height[currentPointer]);
+            int currentWater = Math.min(height[leftMax], height[rightMax]) - height[currentPointer];
+            // System.out.println("currentWater:" + currentWater);
+            if (currentPointer > 0)
+                tappingWater += currentWater;
+
+            currentPointer++;
+        }
+        return tappingWater;
     }
 
 }
