@@ -61,8 +61,8 @@ class ConnectLevelOrderSiblings {
         root.left.left = new TreeNode1(9);
         root.right.left = new TreeNode1(10);
         root.right.right = new TreeNode1(5);
-        ConnectLevelOrderSiblings.connect(root);
+        //ConnectLevelOrderSiblings.connect(root);
         System.out.println("Level order traversal using 'next' pointer: ");
-        //root.printLevelOrder();
+        root.printLevelOrder();
     }
 }

@@ -1,4 +1,5 @@
-package Common;
+package DynamicProgramming;
+
 import java.util.Arrays;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -17,15 +18,13 @@ public class CoinChange {
         int[] dp = new int[k + 1];
         Arrays.fill(dp, Integer.MAX_VALUE);
         int n = coin.length;
-
         dp[0] = 0;
-
         for (int i = 1; i < n + 1; i++) {
             for (int j = coin[i - 1]; j < k + 1; j++) {
+                // Set value if current position - coin value is less than old value
                 dp[j] = Math.min(dp[j - coin[i - 1]] + 1, dp[j]);
             }
         }
-
         return dp;
     }
 

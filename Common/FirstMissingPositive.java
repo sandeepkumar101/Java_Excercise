@@ -1,7 +1,7 @@
 package Common;
 public class FirstMissingPositive {
     public static void main(String[] args) {
-        int[] a = { 1, 1 };
+        int[] a = { 3,4,-1,1 };
         System.out.println(firstMissingPositive(a));
         int[] b = { 1,1,1,2,2,3 };
         System.out.println(removeDuplicates(b));

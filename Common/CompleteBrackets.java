@@ -4,9 +4,10 @@ import java.util.Stack;
 //Hired Assessments
 public class CompleteBrackets {
     public static void main(String[] args) {
-        String angles = "<>><>"; // "><<><";
+        String angles = "<>>>>><<<<<>>><><>><<<>><><<><>><<><><>><>"; // "><<><";
         // Expect "<><<><>>"
         System.out.println(solution2(angles));
+        System.out.println(solution(angles));
     }
 
     static char angleOpen = '<';
