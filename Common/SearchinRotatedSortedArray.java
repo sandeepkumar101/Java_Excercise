@@ -1,7 +1,11 @@
 package Common;
+
+import java.util.Arrays;
+
 public class SearchinRotatedSortedArray {
     public static void main(String[] args) {
-        int res[] = { 4,5,6,7,0,1,2 };
+        int res[] = { 4,5,0,9,34,5,4,54,56,5,7,57,6,7,0,1,2 };
+        Arrays.sort(res);
         System.out.println(search1(res, 6));
     }
 
@@ -64,6 +68,7 @@ public class SearchinRotatedSortedArray {
         int start = 0;
         int end = nums.length - 1;
         int pivot = findPivot(nums);
+        System.out.println(pivot);
         if(pivot == -1)
             return binarySearch(nums, start, end, target);
         else if(target == nums[pivot])
@@ -84,9 +89,9 @@ public class SearchinRotatedSortedArray {
         while(left<right){
             mid = left +(right-left)/2;
            if(nums[mid]>nums[left])
-                right = mid + 1;
+                right = mid - 1;
             else 
-                left = mid;            
+                left = mid+1;            
         }
         return mid;
     }

@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class PermutationinString {
     public static void main(String[] args) {
-        String s1 = "ab", s2 = "a";
+        String s1 = "ab", s2 = "abc";
         System.out.println(checkInclusion(s1, s2));
     }
 

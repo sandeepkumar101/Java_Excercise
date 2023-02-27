@@ -1,4 +1,5 @@
 package Common;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -46,49 +47,42 @@ public class FindAllAnagramsinaString {
         return res;
     }
 
-    public static List<Integer> findAnagrams1(String s, String p) 
-    {
-        //Anagram Map
+    public static List<Integer> findAnagrams1(String s, String p) {
+        // Anagram Map
         Map<Character, Integer> anagramMap = new HashMap<>();
-        for(int i = 0; i < p.length(); i++)
-        {
-            anagramMap.put(p.charAt(i), anagramMap.getOrDefault(p.charAt(i),0)+1);
+        for (int i = 0; i < p.length(); i++) {
+            anagramMap.put(p.charAt(i), anagramMap.getOrDefault(p.charAt(i), 0) + 1);
         }
 
         int start = 0;
         int end = 0;
-        //Map<Character, Integer> originMap = new HashMap<>();
+        // Map<Character, Integer> originMap = new HashMap<>();
         List<Integer> anagramList = new ArrayList<>();
         int count = 0;
-        while(end< s.length())
-        {
+        while (end < s.length()) {
             char toAdd = s.charAt(end);
             end++;
-            if(anagramMap.containsKey(toAdd))
-            {
-                //originMap.put(toAdd, originMap.getOrDefault(toAdd,0)+1);
+            if (anagramMap.containsKey(toAdd)) {
+                // originMap.put(toAdd, originMap.getOrDefault(toAdd,0)+1);
                 count++;
             }
 
-            if(count == p.length())
-            {
+            if (count == p.length()) {
                 anagramList.add(start);
             }
 
-            if(end - start >= p.length())
-            {
+            if (end - start >= p.length()) {
                 char toRemove = s.charAt(start);
                 start++;
-                if(anagramMap.containsKey(toRemove))
-                {
-                    //originMap.put(toRemove, originMap.getOrDefault(toRemove,0)-1);
+                if (anagramMap.containsKey(toRemove)) {
+                    // originMap.put(toRemove, originMap.getOrDefault(toRemove,0)-1);
                     count--;
                 }
             }
         }
 
         return anagramList;
-        
+
     }
 
 }

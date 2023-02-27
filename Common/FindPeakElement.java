@@ -1,8 +1,8 @@
 package Common;
 public class FindPeakElement {
     public static void main(String[] args) {
-        int res[] = { 1, 2, 3, 1 };
-        System.out.println(findPeakElement(res));
+        int res[] = { 1, 7, 3, 1, 4,1,6,2 };
+        System.out.println(findPeakElement2(res));
     }
 
     public static int findPeakElement1(int[] nums) {
