@@ -1,6 +1,9 @@
 package Common;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import java.util.PriorityQueue;
 import java.util.stream.IntStream;
 
@@ -62,10 +65,10 @@ public class MaximumNumberofTasksYouCanAssign {
         int[] pills = { 1, 1, 1, 3 };
         int[] strength = { 5, 1, 5, 10 };
         for (int i = 0; i < tasks.length; i++) {
-            System.out.println(solution(tasks[i], workers[i], pills[i], strength[i]));
-            //System.out.println(solution1(tasks[i], workers[i], pills[i], strength[i]));
+            // System.out.println(solution(tasks[i], workers[i], pills[i], strength[i]));
+            // System.out.println(solution1(tasks[i], workers[i], pills[i], strength[i]));
+            System.out.println(solution4(tasks[i], workers[i], pills[i], strength[i]));
         }
-        ;
 
     }
 
@@ -78,7 +81,7 @@ public class MaximumNumberofTasksYouCanAssign {
 
         PriorityQueue<Integer> workQueueNotAssigned = new PriorityQueue<>();
         PriorityQueue<Integer> taskQueueSlidingWindow = new PriorityQueue<>(Collections.reverseOrder());
-        //assign task to all worker they don't need pills
+        // assign task to all worker they don't need pills
         while (!workQueue.isEmpty()) {
             while (!taskQueue.isEmpty() && workQueue.peek() >= taskQueue.peek()) {
                 taskQueueSlidingWindow.offer(taskQueue.poll());
@@ -95,12 +98,13 @@ public class MaximumNumberofTasksYouCanAssign {
         if (!taskQueueSlidingWindow.isEmpty()) {
             taskQueueSlidingWindow.forEach(taskQueue::offer);
         }
-        //assign task to all worker they can work with pills
+        // assign task to all worker they can work with pills
         while (pills > 0 && !workQueueNotAssigned.isEmpty() && !taskQueue.isEmpty()) {
             while (!taskQueue.isEmpty() && workQueueNotAssigned.peek() + strength >= taskQueue.peek()) {
                 taskQueueSlidingWindow.offer(taskQueue.poll());
             }
-            if (!taskQueueSlidingWindow.isEmpty() && workQueueNotAssigned.peek() + strength >= taskQueueSlidingWindow.peek()) {
+            if (!taskQueueSlidingWindow.isEmpty()
+                    && workQueueNotAssigned.peek() + strength >= taskQueueSlidingWindow.peek()) {
                 maxtask++;
                 taskQueueSlidingWindow.poll();
                 pills--;
@@ -159,4 +163,91 @@ public class MaximumNumberofTasksYouCanAssign {
         return recurcivePill(taskQueue, workQueueNotAssigned, pills, strength, recurvice + 1, maxtask, maxPills);
 
     }
+
+    public static int solution3(int[] tasks, int[] workers, int pills, int strength) {
+        int maxTask = 0;
+        Arrays.sort(tasks);
+        Arrays.sort(workers);
+
+        for (int i = 0; i < workers.length; i++) {
+            int j = 0;
+            int index = -1;
+            while (j < tasks.length && workers[i] >= tasks[j]) {
+                if (tasks[j] > -1) {
+                    index = j;
+                }
+                j++;
+            }
+            if (index > -1 && workers[i] >= tasks[index]) {
+                maxTask++;
+                workers[i] = -1;
+                tasks[index] = -1;
+            }
+
+        }
+        Arrays.sort(tasks);
+        Arrays.sort(workers);
+
+        for (int i = maxTask, j = maxTask; i < workers.length && j < tasks.length; i++) {
+            if (workers[i] >= tasks[j]) {
+                maxTask++;
+                j++;
+            } else if (pills > 0 && workers[i] + strength >= tasks[j]) {
+                maxTask++;
+                pills--;
+                j++;
+            }
+
+        }
+
+        return maxTask;
+    }
+
+    public static int solution4(int[] tasks, int[] workers, int pills, int strength) {
+        int maxTask = 0;
+        Arrays.sort(workers);
+        PriorityQueue<Integer> taskQueue = new PriorityQueue<>();
+        IntStream.of(tasks).forEach(taskQueue::offer);
+        PriorityQueue<Integer> taskQueueSlidingWindow = new PriorityQueue<>(Collections.reverseOrder());
+        int[][] matrix = new int[workers.length][2];
+
+        for (int i = 0; i < workers.length; i++) {
+            while (!taskQueue.isEmpty() && workers[i] >= taskQueue.peek()) {
+                taskQueueSlidingWindow.offer(taskQueue.poll());
+            }
+            if (!taskQueueSlidingWindow.isEmpty() && workers[i] >= taskQueueSlidingWindow.peek()) {
+                int task = taskQueueSlidingWindow.poll();
+
+                matrix[maxTask][0] = workers[i];
+                matrix[maxTask][1] = task;
+                maxTask++;
+                workers[i] = -1;
+            }
+        }
+        System.out.println(Arrays.deepToString(matrix));
+        int[][] matrixwithPill = new int[workers.length][2];
+        if (!taskQueueSlidingWindow.isEmpty()) {
+            taskQueueSlidingWindow.forEach(taskQueue::offer);
+        }
+        Arrays.sort(workers);
+
+        for (int i = maxTask; pills > 0 && i < workers.length; i++) {
+            while (!taskQueue.isEmpty() && workers[i] + strength >= taskQueue.peek()) {
+                taskQueueSlidingWindow.offer(taskQueue.poll());
+            }
+            if (!taskQueueSlidingWindow.isEmpty() && workers[i] + strength >= taskQueueSlidingWindow.peek()) {
+                int task = taskQueueSlidingWindow.poll();
+
+                matrixwithPill[maxTask][0] = workers[i];
+                matrixwithPill[maxTask][1] = task;
+                maxTask++;
+                workers[i] = -1;
+                pills--;
+            }
+
+        }
+        System.out.println(Arrays.deepToString(matrixwithPill));
+        return maxTask;
+    }
+
 }
