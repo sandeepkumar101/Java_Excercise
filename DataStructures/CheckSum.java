@@ -1,5 +1,7 @@
 package DataStructures;
 
+import java.util.Arrays;
+
 /**
  * In this problem, you have to implement the
  * int[] findSum(int[] arr, int n) method,
@@ -17,7 +19,7 @@ public class CheckSum {
         int n = 9;
         int[] arr1 = { 1, 2, 3, 4, 5 };
         if (arr1.length > 0) {
-            int[] arr2 = findSum(arr1, n);
+            int[] arr2 = findSum1(arr1, n);
             int num1 = arr2[0];
             int num2 = arr2[1];
 
@@ -96,4 +98,24 @@ public class CheckSum {
         return arr;
     }
 
+    //
+    public static int[] findSum1(int[] arr, int n) {
+        Arrays.sort(arr);
+        int[] pair = new int[2];
+        int start = 0;
+        int end = arr.length - 1;
+        while (start <= end) {
+            int sum = arr[start] + arr[end];
+            if (sum == n) {
+                pair[0] = arr[start];
+                pair[1] = arr[end];
+                break;
+            } else if (sum > n) {
+                end--;
+            } else {
+                start++;
+            }
+        }
+        return pair;
+    }
 }
