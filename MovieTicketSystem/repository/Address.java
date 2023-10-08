@@ -1,4 +1,4 @@
-package MovieTicketSystem.repository;
+package movieticketsystem.repository;
 
 public class Address {
 

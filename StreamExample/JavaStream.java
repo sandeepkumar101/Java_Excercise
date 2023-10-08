@@ -1,4 +1,4 @@
-package StreamExample;
+package streamexample;
 
 import java.math.BigDecimal;
 import java.util.Arrays;

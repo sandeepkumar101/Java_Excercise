@@ -1,4 +1,4 @@
-package StreamExample;
+package streamexample;
 
 public class BinaryToDecimalExample {
     public static int getDecimal(int binary){  

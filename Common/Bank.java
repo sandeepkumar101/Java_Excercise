@@ -1,4 +1,4 @@
-package Common;
+package common;
 public class Bank {
     public static void main(String[] args) {
         System.out.println(solution("BAABA", new int[] { 2, 4, 1, 1, 2 }));

@@ -1,4 +1,4 @@
-package Common;
+package common;
 import java.util.*;
 public class RemoveCoveredIntervals {
     public static void main(String[] args) {

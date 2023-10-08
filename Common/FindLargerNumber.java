@@ -1,4 +1,4 @@
-package Common;
+package common;
 
 public class FindLargerNumber {
     public static void main(String[] args) {

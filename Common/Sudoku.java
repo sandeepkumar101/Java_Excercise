@@ -1,8 +1,8 @@
-package Common;
+package common;
 
 import java.util.Arrays;
 
-import DynamicProgramming.Print;
+import dynamicprogramming.Print;
 
 public class Sudoku {
 

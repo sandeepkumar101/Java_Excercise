@@ -1,4 +1,4 @@
-package Common;
+package common;
 public class RemoveDuplicatesfromSortedListII {
     public static void main(String[] args) {
         int[] nums = { 1, 1, 1, 2, 3, 3, 3, 4, 4, 5 };

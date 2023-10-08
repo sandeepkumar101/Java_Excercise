@@ -1,4 +1,4 @@
-package Common;
+package common;
 //Trapping Rain Water
 
 //https://leetcode.com/problems/trapping-rain-water/

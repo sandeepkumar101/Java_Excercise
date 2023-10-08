@@ -1,4 +1,4 @@
-package StreamExample;
+package streamexample;
 
 import java.util.ArrayList;
 import java.util.HashSet;

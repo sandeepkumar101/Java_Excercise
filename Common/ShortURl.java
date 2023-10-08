@@ -1,4 +1,4 @@
-package Common;
+package common;
 
 // Java program to generate short url from integer id and
 // integer id back from short url.

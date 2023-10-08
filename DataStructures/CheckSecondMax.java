@@ -1,4 +1,4 @@
-package DataStructures;
+package datastructures;
 
 public class CheckSecondMax {
     public static String arrayToString(int arr[]) {

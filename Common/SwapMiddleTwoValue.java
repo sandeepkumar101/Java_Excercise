@@ -1,4 +1,4 @@
-package Common;
+package common;
 
 /*
  * Click `Run` to execute the snippet below!

@@ -1,4 +1,4 @@
-package Common;
+package common;
 public class MinimumSizeSubarraySum {
     public static void main(String[] args) {
         int res[] = { 1, 2, 3, 4, 5 };

@@ -1,4 +1,4 @@
-package StreamExample;
+package streamexample;
 
 // java program to add
 // two binary strings

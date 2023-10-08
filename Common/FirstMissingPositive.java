@@ -1,4 +1,4 @@
-package Common;
+package common;
 public class FirstMissingPositive {
     public static void main(String[] args) {
         int[] a = { 3,4,-1,1 };

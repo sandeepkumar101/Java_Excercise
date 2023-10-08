@@ -1,4 +1,4 @@
-package Common;
+package common;
 public class FindPeakElement {
     public static void main(String[] args) {
         int res[] = { 1, 7, 3, 1, 4,1,6,2 };

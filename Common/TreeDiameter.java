@@ -1,4 +1,4 @@
-package Common;
+package common;
 class TreeNode8 {
     int val;
     TreeNode1 left;

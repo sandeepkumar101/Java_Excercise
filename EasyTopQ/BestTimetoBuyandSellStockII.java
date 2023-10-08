@@ -1,4 +1,4 @@
-package EasyTopQ;
+package easytopq;
 
 /**
  * You are given an integer array prices where prices[i] is the price of a given

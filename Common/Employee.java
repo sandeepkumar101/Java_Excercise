@@ -1,4 +1,4 @@
-package Common;
+package common;
 public class Employee {
     private String name;
     private int salary;

@@ -1,4 +1,4 @@
-package EasyTopQ;
+package easytopq;
 
 import java.util.Arrays;
 

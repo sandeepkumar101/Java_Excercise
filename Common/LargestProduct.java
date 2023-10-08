@@ -1,4 +1,4 @@
-package Common;
+package common;
 public class LargestProduct {
     public static void main(String[] args) {
         System.out.println(largestProductOfThree(new int[] { -10, -10, 5, 2, 2, 80 }));

@@ -1,6 +1,6 @@
-package Common;
+package common;
 
-import DynamicProgramming.Print;
+import dynamicprogramming.Print;
 
 public class FindIsland {
 

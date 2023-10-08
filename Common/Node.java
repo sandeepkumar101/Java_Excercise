@@ -1,4 +1,4 @@
-package Common;
+package common;
 public class Node {
     public int data;
     public Node next;
