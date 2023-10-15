@@ -53,4 +53,30 @@ public class ValidPalindrome {
         }
         return true;
     }
+
+    public static boolean isValidPalindrome(String s)
+    {
+        if(s == null || s.isEmpty())
+        {
+            return false;
+        }
+        int left  = 0;
+        int right = s.length() -1;
+        //Iterate wusing tow pointer
+        boolean isPalindrome = false;
+        while(left<=right)
+        {
+            if(s.charAt(left) != s.charAt(right))
+            {
+                return false;
+            }
+            else
+            {
+                right--;
+                left++;
+            }
+        }
+        return isPalindrome;
+
+    }
 }
