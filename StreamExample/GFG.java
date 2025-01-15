@@ -56,7 +56,7 @@ public class GFG {
 	//Driver code
 	public static void main(String args[])
 	{
-		String a = "1", b="1";
+		String a = "11", b="1";
 		
 		System.out.print(addBinary(a, b));
 	}
